@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -73,6 +74,21 @@ public class BookServiceImpl implements BookService {
         TypeRef<List<Book>> typeRef = new TypeRef<List<Book>>() {};
 
         return JsonPath.parse(serializedBooksData).read("$..books[?(@.isbn)]", typeRef);
+    }
+
+    @Override
+    public List<Map<String, Object>> getExpensiveBooks() {
+
+        String serializedBooksData = bookDao.getSerializedBooksData();
+
+        TypeRef<List<Map<String, Object>>> typeRef = new TypeRef<List<Map<String, Object>>>() {};
+
+
+        List<Map<String, Object>> expensiveBooks = JsonPath
+                .parse(serializedBooksData)
+                .read("$.store.books[?(@.price > 10)]", typeRef);
+
+        return expensiveBooks;
     }
 
 }

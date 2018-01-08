@@ -5,6 +5,7 @@ import com.chriniko.jsonpath.example.service.BookService;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;
+import java.util.Map;
 
 public class BooksTester {
 
@@ -70,6 +71,12 @@ public class BooksTester {
         System.out.println();
 
 
+        // 8th example display all expensive books...
+        System.out.println("~~~ EXPENSIVE BOOKS ~~~");
+        List<Map<String, Object>> expensiveBooks = bookService.getExpensiveBooks();
+        expensiveBooks.forEach(System.out::println);
+
+        System.out.println();
 
 
     }

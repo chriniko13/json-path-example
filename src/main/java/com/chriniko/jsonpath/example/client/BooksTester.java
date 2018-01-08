@@ -12,7 +12,7 @@ public class BooksTester {
 
     public static void firstExample(ApplicationContext context) {
 
-        BookService bookService = context.getBean("bookServiceImpl", BookService.class);
+        final BookService bookService = context.getBean("bookServiceImpl", BookService.class);
 
 
         // 1st example display all authors...
@@ -77,7 +77,6 @@ public class BooksTester {
         expensiveBooks.forEach(System.out::println);
 
         System.out.println();
-
 
     }
 }

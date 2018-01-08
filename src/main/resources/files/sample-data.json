@@ -1,6 +1,6 @@
 {
   "store": {
-    "book": [
+    "books": [
       {
         "category": "reference",
         "author": "Nigel Rees",
